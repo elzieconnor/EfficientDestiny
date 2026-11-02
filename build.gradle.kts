@@ -19,15 +19,18 @@ repositories {
 
 dependencies {
 
-	// Spring WebClient
-	implementation("org.springframework.boot:spring-boot-starter-webclient")
+	// Jackson
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
 	// Kotlin Coroutines
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 
-	// Jackson
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	// Spring WebFlux
+	implementation("org.springframework.boot:spring-boot-starter-webflux")
+
+	// Spring Validation
+	implementation("org.springframework.boot:spring-boot-starter-validation")
 
 	// Unit Testing
 	testImplementation("org.springframework.boot:spring-boot-starter-test")

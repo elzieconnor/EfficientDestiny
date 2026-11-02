@@ -1,14 +1,16 @@
 package app.config
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import jakarta.validation.constraints.NotBlank
 import org.springframework.boot.context.properties.ConfigurationProperties
+import org.springframework.validation.annotation.Validated
 
+@Validated
 @ConfigurationProperties(prefix = "bungie.platform")
 data class BungiePlatformConfig (
 
-    @JsonProperty("api-key")
+    @NotBlank
     val apiKey: String,
 
-    @JsonProperty("base-url")
+    @NotBlank
     val baseUrl: String,
 )
