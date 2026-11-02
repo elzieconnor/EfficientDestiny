@@ -1,9 +1,7 @@
 package app.controller
 
 import app.config.BungieOAuthConfig
-import app.constant.CLIENT_ID
 import app.constant.CODE
-import app.constant.RESPONSE_TYPE
 import app.model.AccessTokenResponse
 import app.service.OAuthService
 import org.springframework.http.HttpStatus
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.util.UriComponentsBuilder
 
 @RestController
-@RequestMapping("/api")
 class OAuthController(
     private val config: BungieOAuthConfig,
     private val oAuthService: OAuthService
@@ -42,4 +39,9 @@ class OAuthController(
         ResponseEntity
             .ok()
             .body(oAuthService.exchange(code))
+
+    companion object {
+        private const val CLIENT_ID: String = "client_id"
+        private const val RESPONSE_TYPE: String = "response_type"
+    }
 }

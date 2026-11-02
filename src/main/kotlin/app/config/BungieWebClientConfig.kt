@@ -1,6 +1,5 @@
 package app.config
 
-import app.constant.API_KEY
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.reactive.function.client.WebClient
@@ -17,5 +16,9 @@ class BungieWebClientConfig(
             .baseUrl(config.baseUrl)
             .defaultHeader(API_KEY, config.apiKey)
             .build()
+    }
+
+    companion object {
+        const val API_KEY = "X-API-Key"
     }
 }
