@@ -1,6 +1,8 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
-	kotlin("jvm") version "2.3.21"
-	kotlin("plugin.spring") version "2.3.21"
+	kotlin("jvm") version "2.4.21"
+	kotlin("plugin.spring") version "2.4.21"
 	id("org.springframework.boot") version "4.1.2"
 	id("io.spring.dependency-management") version "1.1.7"
 }
@@ -17,8 +19,8 @@ repositories {
 
 dependencies {
 
-	// Spring WebFlux
-	implementation("org.springframework.boot:spring-boot-starter-webflux")
+	// Spring WebClient
+	implementation("org.springframework.boot:spring-boot-starter-webclient")
 
 	// Kotlin Coroutines
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")
