@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: efficient-destiny
+
+bungie:
+  platform:
+    base-url: https://www.bungie.net/Platform
+    api-key: ${BUNGIE_API_KEY}
+
+  oauth:
+    client-id: ${BUNGIE_CLIENT_ID}
+    client-secret: ${BUNGIE_CLIENT_SECRET}
+
+server:
+  port: 8080
+  ssl:
+    enabled: true
+    key-store: classpath:keystore/keystore.p12
+    key-store-password: changeit
+    key-store-type: PKCS12
+    key-alias: local-ssl
