@@ -2,12 +2,11 @@ package app.controller
 
 import app.config.BungieOAuthConfig
 import app.constant.CODE
-import app.model.AccessTokenResponse
+import app.model.AccessToken
 import app.service.OAuthService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.util.UriComponentsBuilder
@@ -15,7 +14,7 @@ import org.springframework.web.util.UriComponentsBuilder
 @RestController
 class OAuthController(
     private val config: BungieOAuthConfig,
-    private val oAuthService: OAuthService
+    private val oAuthService: OAuthService,
 ) {
 
     @GetMapping("/authorize")
@@ -35,7 +34,7 @@ class OAuthController(
     @GetMapping("/token/exchange")
     suspend fun exchange(
         @RequestParam(CODE) code: String,
-    ): ResponseEntity<AccessTokenResponse> =
+    ): ResponseEntity<AccessToken> =
         ResponseEntity
             .ok()
             .body(oAuthService.exchange(code))

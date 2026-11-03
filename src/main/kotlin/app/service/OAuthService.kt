@@ -2,7 +2,7 @@ package app.service
 
 import app.config.BungieOAuthConfig
 import app.constant.CODE
-import app.model.AccessTokenResponse
+import app.model.AccessToken
 import org.springframework.http.MediaType
 import org.springframework.stereotype.Service
 import org.springframework.web.reactive.function.BodyInserters
@@ -16,7 +16,7 @@ class OAuthService(
 ) {
     suspend fun exchange(
        code: String,
-    ): AccessTokenResponse =
+    ): AccessToken =
         client
             .post()
             .uri("/app/oauth/token/")

@@ -2,7 +2,7 @@ package app.model
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
-data class AccessTokenResponse(
+data class AccessToken(
 
     @JsonProperty("access_token")
     val accessToken: String,

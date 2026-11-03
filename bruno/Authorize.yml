@@ -1,0 +1,45 @@
+info:
+  name: Authorize
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{baseUrl}}/authorize?client_id={{clientId}}&response_type=code"
+  params:
+    - name: client_id
+      value: "{{clientId}}"
+      type: query
+    - name: response_type
+      value: code
+      type: query
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: before-request
+      code: |-
+        const fs = require('fs');
+        const path = require('path');
+
+        const secrets = path.join(bru.cwd(), 'secrets.json');
+
+        if(!fs.existsSync(secrets)) {
+          throw new Error("Missing secrets.json!");
+        }
+
+        const { clientId, clientSecret } = JSON.parse(fs.readFileSync(secrets, "utf8"));
+
+        if (!clientId || !clientSecret) {
+          throw new Error("clientId and clientSecret must be set in secrets.json!");
+        }
+
+        bru.setVar("clientId", clientId);
+        bru.setVar("clientSecret", clientSecret);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
